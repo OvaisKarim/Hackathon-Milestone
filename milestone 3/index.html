@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Resume Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        form, #resume {
+            max-width: 600px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            text-align: center;
+        }
+        #resume {
+            display: none;
+        }
+        .resume-section {
+            margin-bottom: 20px;
+        }
+        .resume-section h3 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Dynamic Resume Builder</h2>
+
+    <!-- فارم -->
+    <form id="resumeForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+        <label for="education">Education:</label>
+        <textarea id="education" name="education" placeholder="Enter your education" required></textarea>
+
+        <label for="experience">Experience:</label>
+        <textarea id="experience" name="experience" placeholder="Enter your work experience" required></textarea>
+
+        <label for="skills">Skills:</label>
+        <textarea id="skills" name="skills" placeholder="Enter your skills" required></textarea>
+
+        <button type="button" onclick="buildResume()">Build Resume</button>
+    </form>
+
+    <!-- ریزیومے کا ڈسپلے سیکشن -->
+    <div id="resume">
+        <h2>Resume</h2>
+        <div class="resume-section">
+            <h3>Name</h3>
+            <p id="displayName"></p>
+        </div>
+        <div class="resume-section">
+            <h3>Email</h3>
+            <p id="displayEmail"></p>
+        </div>
+        <div class="resume-section">
+            <h3>Phone</h3>
+            <p id="displayPhone"></p>
+        </div>
+        <div class="resume-section">
+            <h3>Education</h3>
+            <p id="displayEducation"></p>
+        </div>
+        <div class="resume-section">
+            <h3>Experience</h3>
+            <p id="displayExperience"></p>
+        </div>
+        <div class="resume-section">
+            <h3>Skills</h3>
+            <p id="displaySkills"></p>
+        </div>
+    </div>
+
+    <script>
+        function buildResume() {
+            // فارم سے ڈیٹا حاصل کریں
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const education = document.getElementById("education").value;
+            const experience = document.getElementById("experience").value;
+            const skills = document.getElementById("skills").value;
+
+            // ریزیومے ڈسپلے کرنے والے ایریاز میں ڈیٹا شامل کریں
+            document.getElementById("displayName").textContent = name;
+            document.getElementById("displayEmail").textContent = email;
+            document.getElementById("displayPhone").textContent = phone;
+            document.getElementById("displayEducation").textContent = education;
+            document.getElementById("displayExperience").textContent = experience;
+            document.getElementById("displaySkills").textContent = skills;
+
+            // فارم کو چھپائیں اور ریزیومے کو ظاہر کریں
+            document.getElementById("resumeForm").style.display = "none";
+            document.getElementById("resume").style.display = "block";
+        }
+    </script>
+</body>
+</html>
